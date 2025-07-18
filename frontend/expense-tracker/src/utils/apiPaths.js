@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:8000"; // Use HTTP unless you’ve set up HTTPS locally
+export const BASE_URL = import.meta.env.VITE_API_URL; // Use HTTP unless you’ve set up HTTPS locally
 
 // utils/apiPaths.js
 
