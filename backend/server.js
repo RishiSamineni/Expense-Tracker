@@ -12,11 +12,25 @@ const app = express();
 
 // Middleware to handle CORS
 
-app.use(cors({
-    origin: process.env.CLIENT_URL || "*",
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://expense-tracker-frontend-956m.onrender.com",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-}));
+    credentials: true, // if sending cookies or auth headers
+  })
+);
 
 app.use(express.json());
 
