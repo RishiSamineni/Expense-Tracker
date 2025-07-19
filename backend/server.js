@@ -15,6 +15,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "https://expense-tracker-frontend-956m.onrender.com",
+  "https://expense-tracker-2-e31h.onrender.com",
 ];
 
 app.use(
@@ -31,6 +32,7 @@ app.use(
     credentials: true, // if sending cookies or auth headers
   })
 );
+
 
 app.use(express.json());
 
