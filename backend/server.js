@@ -38,13 +38,6 @@ app.use(express.json());
 
 connectDB();
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/expense-tracker/build")));
-  app.get("*", (req, res) => { 
-    res.sendFile(path.resolve(__dirname, "../frontend/expense-tracker/build", "index.html"));
-  });
-}
-
 
 app.use("/api/v1/auth",authRoutes);
 app.use("/api/v1/income",incomeRoutes);
